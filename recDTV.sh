@@ -27,7 +27,7 @@ Date=`date "+%Y%m%d%H%M%S"`
 #echo ${Date}
 
 #ファイル名生成
-FileName=${Title}_"D"${Date}"P"$$"T"${Time}".ts"
+FileName=${Title}_"D"${Date}"P"$$"T"${Time}"C"${Ch}".ts"
 LogFile=${LogDir}${FileName}".log"
 
 
