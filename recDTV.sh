@@ -12,25 +12,26 @@ find ${LogDir} -name "*.log" -type f -mtime +${PARAM_DATE_NUM} -exec rm -f {} \;
 
 #チャンネル番号(入力)
 Ch=${1}
-echo ${Ch}
+#echo ${Ch}
 
 #録画秒数(入力)
 Time=${2}
-echo ${Time}
+#echo ${Time}
 
 #番組名取得
 Title=`programmeGetter.sh ${1}`
-echo ${Title}
+#echo ${Title}
 
 #日付取得
 Date=`date "+%Y%m%d%H%M%S"`
-echo ${Date}
+#echo ${Date}
 
 #ファイル名生成
 FileName=${Title}_"D"${Date}"P"$$"T"${Time}".ts"
 LogFile=${LogDir}${FileName}".log"
 
-echo ${FileName}
 
 #録画
 /usr/local/bin/recpt1 --strip --b25 ${Ch} ${Time} ${FileName} 1>${LogFile} 2>&1
+
+echo ${LogFile} >> ${LogFile}
