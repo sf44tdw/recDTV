@@ -1,5 +1,15 @@
 ﻿#!/bin/bash
 
+#ログディレクトリ(ホームディレクトリ直下)
+LogDir=$HOME/PtLog/
+if [ ! -e ${LogDir} ]; then
+`mkdir ${LogDir}`
+fi
+
+# ファイル更新日時が10日を越えたログファイルを削除
+PARAM_DATE_NUM=10
+find ${LogDir} -name "*.log" -type f -mtime +${PARAM_DATE_NUM} -exec rm -f {} \;
+
 #チャンネル番号(入力)
 Ch=${1}
 echo ${Ch}
@@ -17,7 +27,10 @@ Date=`date "+%Y%m%d%H%M%S"`
 echo ${Date}
 
 #ファイル名生成
-FileName=${Title}_"D"${Date}"P"$$"T"${Time}
+FileName=${Title}_"D"${Date}"P"$$"T"${Time}".ts"
+LogFile=${LogDir}${FileName}".log"
 
 echo ${FileName}
 
+#録画
+/usr/local/bin/recpt1 --strip --b25 ${Ch} ${Time} ${FileName} 1>${LogFile} 2>&1
