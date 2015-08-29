@@ -1,5 +1,8 @@
 ﻿#!/bin/bash
 
+#ホームディレクトリへ移動
+cd  $HOME
+
 #ログディレクトリ(ホームディレクトリ直下)
 LogDir=$HOME/PtLog/
 if [ ! -e ${LogDir} ]; then
