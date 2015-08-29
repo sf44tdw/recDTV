@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+#!/bin/bash
 
 #ホームディレクトリへ移動
 cd  $HOME
